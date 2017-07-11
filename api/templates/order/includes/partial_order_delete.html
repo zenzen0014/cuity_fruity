@@ -1,0 +1,18 @@
+{% load widget_tweaks %}
+
+<form method="post" action="{% url 'order_delete_form_ajax' order.order_id %}" class="form_add_order">
+  {% csrf_token %}
+        <div class="js_dialog" id="androidDialog1">
+            <div class="weui-mask"></div>
+            <div class="weui-dialog weui-skin_android">
+                <div class="weui-dialog__hd"><strong class="weui-dialog__title">Confirm book deletion</strong></div>
+                <div class="weui-dialog__bd">
+                   <p class="lead">Are you sure you want to delete the book <strong>{{ order.id }}</strong>?</p>
+                </div>
+                <div class="weui-dialog__ft">
+                    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_default close">Close</a>
+                    <button type="submit" class="weui-btn weui-btn_mini weui-btn_warn submit">Delete</button>
+                </div>
+            </div>
+        </div>
+</form>

@@ -1,0 +1,74 @@
+{% extends "weui/index.html" %}
+{% block content %}
+
+
+<div class="weui-toptips weui-toptips_warn js_tooltips">错误提示</div>
+<div class="container" id="container"></div>
+
+    <script type="text/html" id="tpl_tabbar">
+<div class="page">
+    <div class="page__bd" style="height: 100%;">
+        <div class="weui-tab">
+            <div class="tab__panel">
+                <div class="weui-tab__content tab_active" id="c_store">
+                    Store
+                </div>
+                <div class="weui-tab__content" id="c_basket">
+                    Basket
+                </div>
+                <div class="weui-tab__content" id="c_orderStatus">
+                    Order Status
+                </div>
+                <div class="weui-tab__content" id="c_orderHistory">
+                    Order history
+                </div>
+            </div>
+            <div class="weui-tabbar">
+                <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on" data-id="c_store">
+                    <span style="display: inline-block;position: relative;">
+                        <img src="{{ STATIC_URL }}/{{ url_base }}/images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                        <!--<span class="weui-badge" style="position: absolute;top: -2px;right: -13px;">8</span>-->
+                    </span>
+                    <p class="weui-tabbar__label">Store</p>
+                </a>
+                <a href="javascript:;" class="weui-tabbar__item" data-id="c_basket">
+                    <img src="{{ STATIC_URL }}/{{ url_base }}/images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                    <p class="weui-tabbar__label">Basket</p>
+                </a>
+                <a href="javascript:;" class="weui-tabbar__item" data-id="c_orderStatus">
+                    <span style="display: inline-block;position: relative;">
+                        <img src="{{ STATIC_URL }}/{{ url_base }}/images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                        <!--<span class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span>-->
+                    </span>
+                    <p class="weui-tabbar__label">Order status</p>
+                </a>
+                <a href="javascript:;" class="weui-tabbar__item" data-id="c_orderHistory">
+                    <img src="{{ STATIC_URL }}/{{ url_base }}/images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                    <p class="weui-tabbar__label">Order history</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $('.weui-tabbar__item').on('click', function () {        
+            $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
+            
+            var id = $(this).data('id');
+            console.log(id);
+            $('.tab_active').fadeOut('fast',function(){
+                $(this).removeClass('tab_active');
+                $('#'+id).fadeIn('fast',function(){
+                    $(this).addClass('tab_active');
+                });
+            });
+            
+        });
+    });
+</script>
+
+
+
+
+{% endblock %}

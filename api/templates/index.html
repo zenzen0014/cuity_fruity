@@ -1,0 +1,27 @@
+This is My Index
+
+{% for v in context.data %}
+	{{ v.menu_name }} {{ v.menu_detail }} {{ v.price }}
+{% empty %}
+    No Data
+{% endfor %}
+
+
+
+{{context.qs.menu_id}}
+
+{% for i in context.qs.menus %}
+	{{ i.menu_status}}
+	{{ i.mobile_no}}
+{% empty %}
+	No Data
+{% endfor %}
+
+
+{% for v in context.qs %}
+	{{ v.menu_status}}
+	{{ v.menu_detail}}
+
+{% empty %}
+    No Data
+{% endfor %}

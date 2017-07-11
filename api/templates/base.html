@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<html lang="en">
+
+    <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+          <title>{{ app_name }}</title>
+
+
+          <link rel="stylesheet" href="{{ STATIC_URL }}/assets/weui/css/weui.css"/>
+          <link rel="stylesheet" href="{{ STATIC_URL }}/assets/weui/css/example.css"/>
+
+          <script src="{{ STATIC_URL }}/assets/js/jquery-2.1.4.min.js"></script>
+
+          {% block head %}
+          {% endblock %}
+
+    </head>
+
+
+
+    <body ontouchstart>
+       
+
+        <div id="container" class="container">
+          {% block content %}
+          {% endblock %}
+        </div>
+
+
+      <script src="{{ STATIC_URL }}/assets/weui/js/zepto.min.js"></script>
+      <script type="{{ STATIC_URL }}/assets/weui/js/jweixin-1.0.0.js"></script>
+      <script src="{{ STATIC_URL }}/assets/weui/js/weui.min.js"></script>
+      <script src="{{ STATIC_URL }}/assets/weui/js/app-controller.js"></script>
+
+
+      {% block javascript %}
+      {% endblock %}
+
+    </body>
+</html>
+
+

@@ -1,0 +1,171 @@
+<script src="{{ STATIC_URL }}/assets/js/jquery-2.1.4.min.js"></script>
+
+<!-- 	<header></header>
+  		{% block content %}
+
+   		{% endblock %}
+    <footer></footer> -->
+
+
+<div id="form_insert"></div>
+<button id="test">post</button>
+
+<input type="file" id="myFile" name="pic" onchange="getBase64Image()" accept="image/*">
+
+
+
+<script type="text/javascript">
+	var base_url = window.location.origin;
+	var pathArray = window.location.pathname.split( '/' );
+	var baseurl = base_url+'/'+pathArray[1]+'/'+pathArray[2];
+
+	$(document).ready(function() {
+		console.log('{{ request.get_host }}');
+		// test_post();
+		// test_get_id();
+		// test_update();
+		// test_delete();
+    // img_cnvrt();
+	});
+
+	$("#test").click(function () {
+       $.getJSON(baseurl+'users', function(json){
+           console.log(json.last_name);
+       });
+    });
+
+	function test_post(){
+	    var data =     {
+                "type": "newshop",
+                "mobile_no": "112098764"
+            }
+	    $.post("users",data).done(function(json){
+	        console.log(json.last_name);
+	    });
+    }
+
+    function test_get_id() {
+        $.get("user/2/").done(function(json){
+	        console.log(json);
+	    });
+    }
+
+    function test_update() {
+        var data =     {
+                "type": "zenzen",
+                "mobile_no": "1301239865"
+            }
+        $.ajax({
+              url: "user/3/",
+              data: data,
+              type: "PUT",
+              dataType: 'json',
+              success: function (json) {
+                console.log(json);
+              }
+        });
+    }
+
+    function test_delete() {
+        $.ajax({
+              url: "user/4/",
+              type: "DELETE",
+              dataType: 'json',
+              success: function (json) {
+                console.log(json);
+              }
+        });
+
+    }
+
+
+    function img_cnvrt(){
+      var fs = require('fs');
+      var base64_data = new Buffer(fs.readFileSync('sample.png')).toString('base64');
+      console.log('<img alt="sample" src="data:image/png;base64,' + base64_data + '">');
+    }
+
+
+    function getBase64Image() {  
+           var filesSelected = document.getElementById("myFile").files;  
+  
+           if (filesSelected.length > 0) {  
+               var file = filesSelected[0];  
+  
+               if (file.type.match('image.*')) {  
+                   var reader = new FileReader();  
+                   reader.readAsDataURL(file);  
+                   reader.onload = function (e) {  
+                       var image = new Image();  
+                       image.onload = function (imageEvent) {  
+  
+                           // Resize the image using canvas  
+                           var canvas = document.createElement('canvas'),  
+                               max_size = 300,// TODO : max size for a pic  
+                               width = image.width,  
+                               height = image.height;  
+                           if (width > height) {  
+                               if (width > max_size) {  
+                                   height *= max_size / width;  
+                                   width = max_size;  
+                               }  
+                           } else {  
+                               if (height > max_size) {  
+                                   width *= max_size / height;  
+                                   height = max_size;  
+                               }  
+                           }  
+                           canvas.width = width;  
+                           canvas.height = height;  
+                           canvas.getContext('2d').drawImage(image, 0, 0, width, height);  
+  
+                           //Getting base64 string;  
+                           var dataUrl = canvas.toDataURL('image/jpeg');  
+  
+                           //Getting blob data  
+                           RESIZED_IMAGE = dataURLToBlob(dataUrl);  
+                       }  
+                       image.src = e.target.result;  
+                   }  
+               }  
+           };  
+       }  
+       /* Utility function to convert a canvas to a BLOB */  
+       var dataURLToBlob = function (dataURL) {  
+          // console.log(dataURL);
+           $("#form_insert").append('<img src="data:image/png;base64,' + dataURL + '">');
+
+           var BASE64_MARKER = ';base64,';  
+           if (dataURL.indexOf(BASE64_MARKER) == -1) {  
+               var parts = dataURL.split(',');  
+               var contentType = parts[0].split(':')[1];  
+               var raw = parts[1];  
+  
+               return new Blob([raw], { type: contentType });  
+           }  
+  
+           var parts = dataURL.split(BASE64_MARKER);  
+           var contentType = parts[0].split(':')[1];  
+           var raw = window.atob(parts[1]);  
+           var rawLength = raw.length;  
+  
+           var uInt8Array = new Uint8Array(rawLength);  
+  
+           for (var i = 0; i < rawLength; ++i) {  
+               uInt8Array[i] = raw.charCodeAt(i);  
+           }  
+
+           // console.log(uI/nt8Array);
+  
+           return new Blob([uInt8Array], { type: contentType });  
+       }  
+       /* End Utility function to convert a canvas to a BLOB */  
+
+</script>
+
+
+
+
+
+
+

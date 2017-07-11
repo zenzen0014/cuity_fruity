@@ -1,0 +1,83 @@
+<div class="weui-actionsheet__cell">
+  <div class="weui-cell">
+      <div class="weui-cell__hd"><label for="" class="weui-label">Order Name</label></div>
+      <div class="weui-cell__bd">
+          <input class="weui-input"  type="text" id="oid">
+      </div>
+   </div>
+</div>
+
+<div class="weui-actionsheet__cell">
+  <div class="weui-cell">
+      <div class="weui-cell__hd"><label for="" class="weui-label">Customer Name</label></div>
+      <div class="weui-cell__bd">
+          <input class="weui-input" type="text" id="cid">
+      </div>
+   </div>
+</div>
+
+
+
+<div class="weui-actionsheet__cell">
+  <div class="weui-cell">
+      <div class="weui-cell__hd"><label for="" class="weui-label">Menu List</label></div>
+      <div class="weui-cell__bd">
+          <input class="weui-input"  type="text" id="ml">
+      </div>
+   </div>
+</div>
+
+
+<div class="weui-actionsheet__cell">
+  <div class="weui-cell">
+      <div class="weui-cell__hd"><label for="" class="weui-label">Time Stamp</label></div>
+      <div class="weui-cell__bd">
+          <input class="weui-input"  type="date" id="ts">
+      </div>
+   </div>
+</div>
+
+
+<div class="weui-actionsheet__cell">
+  <div class="weui-cell">
+      <div class="weui-cell__hd"><label for="" class="weui-label">Status</label></div>
+      <div class="weui-cell__bd">
+          <input class="weui-input"  type="text" id="s">
+      </div>
+   </div>
+</div>
+
+
+<div class="weui-actionsheet__cell">
+    <a href="javascript:;" class="weui-btn weui-btn_primary" id="btn_test">Normal</a>
+</div>
+
+
+
+<script type="text/javascript">
+
+    // android
+    $(function(){
+
+        $("#btn_test").on("click", function () {
+          json = {
+            "store_id"    : $("#oid").val(),
+            "customer_id" : $("#cid").val(),
+            "menu_list"   : $("#ml").val(),
+            "time_stamp"  : $("#ts").val(),
+            "status"      : $("#s").val()
+          }
+          // console.log(json);
+          $.ajax({
+            url: '/orders/order_add',
+            data: json.serialize(),
+            type: 'post',
+            dataType: 'json',
+            success: function (data) {
+             console.log(data);
+            }
+          });
+          return false;
+        });
+    });
+</script>

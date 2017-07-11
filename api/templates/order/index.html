@@ -1,0 +1,115 @@
+{% extends 'order/base.html' %}
+
+{% block content %}
+
+<div class="page actionsheet js_show">
+    <div class="page__hd">
+        <h1 class="page__title">ActionSheet</h1>
+        <p class="page__desc">弹出式菜单</p>
+    </div>
+    <div class="page__bd page__bd_spacing">
+        <a href="javascript:;" class="weui-btn weui-btn_default" id="showIOSActionSheet">iOS ActionSheet</a>
+        <a href="javascript:;" class="weui-btn weui-btn_default" id="showAndroidActionSheet">Android ActionSheet</a>
+    </div>
+    <!--BEGIN actionSheet-->
+    <div>
+        <div class="weui-mask" id="iosMask" style="opacity: 0; display: none;"></div>
+        <div class="weui-actionsheet" id="iosActionsheet">
+            <div class="weui-actionsheet__title">
+                <p class="weui-actionsheet__title-text">这是一个标题，可以为一行或者两行。</p>
+            </div>
+            <div class="weui-actionsheet__menu">
+                <div class="weui-actionsheet__cell">示例菜单</div>
+                <div class="weui-actionsheet__cell">示例菜单</div>
+                <div class="weui-actionsheet__cell">示例菜单</div>
+                <div class="weui-actionsheet__cell">示例菜单</div>
+            </div>
+            <div class="weui-actionsheet__action">
+                <div class="weui-actionsheet__cell" id="iosActionsheetCancel">取消</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="weui-skin_android" id="androidActionsheet" style="display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-actionsheet" style="width: 50%;">
+            <div class="weui-actionsheet__menu">
+                <div class="weui-actionsheet__cell">From Test</div>
+                <div class="weui-actionsheet__cell">
+                	<div class="weui-cell">
+		                <div class="weui-cell__hd"><label for="" class="weui-label">Order Name</label></div>
+		                <div class="weui-cell__bd">
+		                    <input class="weui-input" value="" type="date">
+		                </div>
+		            </div>
+                </div>
+                <div class="weui-actionsheet__cell">
+	                <div class="weui-cell weui-cell_vcode">
+		                <div class="weui-cell__hd"><label class="weui-label">Test</label></div>
+		                <div class="weui-cell__bd">
+		                    <input class="weui-input" placeholder="Test" type="number">
+		                </div>
+		                <div class="weui-cell__ft">
+		                    <img class="weui-vcode-img" src="{{ STATIC_URL }}/assets/weui/images/vcode.jpg">
+		                </div>
+		            </div>
+		        </div>
+                <div class="weui-actionsheet__cell">
+	                <div class="weui-cell weui-cell_switch">
+		                <div class="weui-cell__bd">CheckBox</div>
+		                <div class="weui-cell__ft">
+		                    <label for="switchCP" class="weui-switch-cp">
+		                        <input id="switchCP" class="weui-switch-cp__input" checked="checked" type="checkbox">
+		                        <div class="weui-switch-cp__box"></div>
+		                    </label>
+		                </div>
+		            </div>
+		        </div>
+                <div class="weui-actionsheet__cell">
+                	<a href="#" class="weui-btn weui-btn_primary">Normal</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END actionSheet-->
+    <div class="page__ft j_bottom">
+        <a href="javascript:home()"><img src="{{ STATIC_URL }}/assets/weui/images/icon_footer_link.png"></a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // ios
+    $(function(){
+        var $iosActionsheet = $('#iosActionsheet');
+        var $iosMask = $('#iosMask');
+
+        function hideActionSheet() {
+            $iosActionsheet.removeClass('weui-actionsheet_toggle');
+            $iosMask.fadeOut(200);
+        }
+
+        $iosMask.on('click', hideActionSheet);
+        $('#iosActionsheetCancel').on('click', hideActionSheet);
+        $("#showIOSActionSheet").on("click", function(){
+            $iosActionsheet.addClass('weui-actionsheet_toggle');
+            $iosMask.fadeIn(200);
+        });
+    });
+
+    // android
+    $(function(){
+        var $androidActionSheet = $('#androidActionsheet');
+        var $androidMask = $androidActionSheet.find('.weui-mask');
+
+        $("#showAndroidActionSheet").on('click', function(){
+            $androidActionSheet.fadeIn(200);
+            $androidMask.on('click',function () {
+                $androidActionSheet.fadeOut(200);
+            });
+            console.log("showAndroidActionSheet kilcked");
+        });
+    });
+</script>
+
+
+{% endblock %}

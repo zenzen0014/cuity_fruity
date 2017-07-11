@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>Cutie Fruity</title>
+    <link rel="stylesheet" href="../style/weui.min.css"/>
+    <link rel="stylesheet" href="./example.css"/>
+</head>
+<body ontouchstart>
+    <div class="weui-toptips weui-toptips_warn js_tooltips">错误提示</div>
+
+    <div class="container" id="container"></div>
+
+    <script type="text/html" id="tpl_tabbar">
+        <div class="page">
+        <div class="page__bd page__bd_spacing" style="height: 100%;">
+                <div class="weui-tab">
+                    <div class="weui-tab__panel">
+                        <div class="weui-tab__content tab_active" id="o_onHand">
+                            <div class="weui-panel__hd">Order on hand</div>
+                            <div class="weui-panel__bd">
+                                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                    <div class="weui-media-box__hd">
+                                        <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+                                    </div>
+                                    <div class="weui-media-box__bd">
+                                        <h4 class="weui-media-box__title">Order number: 12376811</h4>
+                                        <p class="weui-media-box__desc">Box size: Large [Apple:4, Orrage:2]</p>
+                                    </div>
+                                </a>
+                                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                                    <div class="weui-media-box__hd">
+                                        <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+                                    </div>
+                                    <div class="weui-media-box__bd">
+                                        <h4 class="weui-media-box__title">Order number: 5332421</h4>
+                                        <p class="weui-media-box__desc">Box size: Small [Banana:1, Mango:5]</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="weui-tab__content" id="o_history">
+                            <div class="weui-panel__hd">History</div>
+                            <div class="weui-panel__bd">
+                                <div class="page__hd">
+
+                                    <div class="weui-form-preview">
+                                     <div class="weui-form-preview__bd">
+                                        <div class="weui-panel__bd" style="text-align: left;">
+                                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px">
+                                                <div class="weui-form-preview__item">
+                                                    <label class="weui-form-preview__label">Order number</label>
+                                                    <span class="weui-form-preview__value">456793   </span>
+                                                </div>
+                                            </a>
+                                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px">
+                                                <div class="weui-media-box__hd">
+                                                    <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+                                                </div>
+                                                <div class="weui-media-box__bd">
+                                                    <h4 class="weui-media-box__title" style="margin-bottom:-5px">Hakuna banana</h4>
+                                                    <p class="weui-media-box__desc">[small] [2]</p>
+                                                    <p class="weui-media-box__desc"><span style="text-align: left;">2400.00 ¥</span></p>
+                                                </div>
+                                            </a>
+
+                                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px">
+                                                <div class="weui-media-box__hd">
+                                                    <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+                                                </div>
+                                                <div class="weui-media-box__bd">
+                                                    <h4 class="weui-media-box__title" style="margin-bottom:-5px">Sex on the biche</h4>
+                                                    <p class="weui-media-box__desc">[Medium] [1]</p>
+                                                    <p class="weui-media-box__desc"><span style="text-align: left;">2400.00 ¥</span></p>
+                                                </div>
+                                            </a>
+
+                                            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px">
+                                                <div class="weui-form-preview__item">
+                                                    <label class="weui-form-preview__label">Date</label>
+                                                    <span class="weui-form-preview__value">03/05/2016</span>
+                                                    <label class="weui-form-preview__label">Price</label>
+                                                    <span class="weui-form-preview__value">50.00 ¥</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="weui-form-preview">
+                                 <div class="weui-form-preview__bd">
+                                    <div class="weui-panel__bd" style="text-align: left;">
+                                        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px">
+                                            <div class="weui-form-preview__item">
+                                                <label class="weui-form-preview__label">Order number</label>
+                                                <span class="weui-form-preview__value">456793   </span>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px">
+                                            <div class="weui-media-box__hd">
+                                                <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+                                            </div>
+                                            <div class="weui-media-box__bd">
+                                                <h4 class="weui-media-box__title" style="margin-bottom:-5px">Hakuna banana</h4>
+                                                <p class="weui-media-box__desc">[small] [2]</p>
+                                                <p class="weui-media-box__desc"><span style="text-align: left;">2400.00 ¥</span></p>
+                                            </div>
+                                        </a>
+
+                                        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px">
+                                            <div class="weui-media-box__hd">
+                                                <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+                                            </div>
+                                            <div class="weui-media-box__bd">
+                                                <h4 class="weui-media-box__title" style="margin-bottom:-5px">Sex on the biche</h4>
+                                                <p class="weui-media-box__desc">[Medium] [1]</p>
+                                                <p class="weui-media-box__desc"><span style="text-align: left;">2400.00 ¥</span></p>
+                                            </div>
+                                        </a>
+
+                                        <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px">
+                                            <div class="weui-form-preview__item">
+                                                <label class="weui-form-preview__label">Date</label>
+                                                <span class="weui-form-preview__value">03/05/2016</span>
+                                                <label class="weui-form-preview__label">Price</label>
+                                                <span class="weui-form-preview__value">50.00 ¥</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    <div class="weui-tab__content" id="menu_mgnt">
+        <div class="weui-panel__hd">
+            <div class="weui-flex">
+                <div class="weui-flex__item"><div class="placeholder">Menu Management </div></div>
+                <div class="weui-flex__item"><div class="placeholder">
+                    <i class="weui-icon-download" style="float: right;" id="addBtn"></i>
+                </div></div>
+            </div>
+        </div>
+        <div class="weui-panel__bd">
+            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                <div class="weui-media-box__hd">
+                    <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+                    <i class="weui-icon-cancel deleteBtn"></i>
+                </div>
+                <div class="weui-media-box__bd">
+                    <h4 class="weui-media-box__title">Bananaaa</h4>
+                    <div class="weui-cells__title">Price</div>
+                    <div class="weui-cells weui-cells_form">
+                        <div class="weui-cell">
+                            <div class="weui-cell__hd"><label class="weui-label">small box</label></div>
+                            <div class="weui-cell__bd">
+                                <input class="weui-input" type="number" pattern="[0-9]*" placeholder="0"/>
+                            </div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__hd"><label class="weui-label">medium box</label></div>
+                            <div class="weui-cell__bd">
+                                <input class="weui-input" type="number" pattern="[0-9]*" placeholder="0"/>
+                            </div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__hd"><label class="weui-label">large box</label></div>
+                            <div class="weui-cell__bd">
+                                <input class="weui-input" type="number" pattern="[0-9]*" placeholder="0"/>
+                            </div>
+                        </div>
+                        <div class="weui-cell weui-cell_switch">
+                            <div class="weui-cell__bd">sale</div>
+                            <div class="weui-cell__ft">
+                                <input class="weui-switch" type="checkbox"/>
+                            </div>
+                        </div>                                    
+                    </div>
+                </div>
+            </a>
+            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                <div class="weui-media-box__hd">
+                    <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+                    <i class="weui-icon-cancel deleteBtn"></i>
+                </div>
+                <div class="weui-media-box__bd">
+                    <h4 class="weui-media-box__title">Appleee</h4>
+                    <div class="weui-cells__title">Price</div>
+                    <div class="weui-cells weui-cells_form">
+                        <div class="weui-cell">
+                            <div class="weui-cell__hd"><label class="weui-label">small box</label></div>
+                            <div class="weui-cell__bd">
+                                <input class="weui-input" type="number" pattern="[0-9]*" placeholder="0"/>
+                            </div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__hd"><label class="weui-label">medium box</label></div>
+                            <div class="weui-cell__bd">
+                                <input class="weui-input" type="number" pattern="[0-9]*" placeholder="0"/>
+                            </div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__hd"><label class="weui-label">large box</label></div>
+                            <div class="weui-cell__bd">
+                                <input class="weui-input" type="number" pattern="[0-9]*" placeholder="0"/>
+                            </div>
+                        </div>
+                        <div class="weui-cell weui-cell_switch">
+                            <div class="weui-cell__bd">sale</div>
+                            <div class="weui-cell__ft">
+                                <input class="weui-switch" type="checkbox"/>
+                            </div>
+                        </div>                                    
+                    </div>
+                </div>
+            </a>  
+            <div class="weui-btn-area">
+                <a href="#" class="weui-btn weui-btn_primary" id="saveBtn">Save</a>
+            </div>   
+            <!--BEGIN toast-->
+            <div id="toast" style="display: none;">
+                <div class="weui-mask_transparent"></div>
+                <div class="weui-toast">
+                    <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+                    <p class="weui-toast__content">Saved</p>
+                </div>
+            </div>
+            <!--end toast-->                   
+        </div>
+        <div id="dialogs">
+            <!--BEGIN deleteDialog-->
+            <div class="js_dialog" id="deleteDialog" style="display: none;">
+                <div class="weui-mask"></div>
+                <div class="weui-dialog">
+                    <div class="weui-dialog__hd"><strong class="weui-dialog__title">Delete confirmation</strong></div>
+                    <div class="weui-dialog__bd">After delete this process cannot be undone, are you sure?</div>
+                    <div class="weui-dialog__ft">
+                        <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">cancle</a>
+                        <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary">delete</a>
+                    </div>
+                </div>
+            </div>
+            <!--END deleteDialog-->
+            <!--BEGIN newDialog-->
+            <div class="js_dialog" id="newDialog" style="display: none;">
+                <div class="weui-mask"></div>
+                <div class="weui-dialog">
+                    <div class="weui-dialog__hd"><strong class="weui-dialog__title">New Menu</strong></div>
+                    <div class="weui-dialog__bd">
+                        <div class="weui-cells weui-cells_form">
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <div class="weui-uploader">
+                                        <div class="weui-uploader__bd">                                     
+                                            <div class="weui-uploader__input-box">
+                                                <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__hd"><label class="weui-label">Name</label></div>
+                            <div class="weui-cell__bd">
+                                <textarea class="weui-textarea" placeholder="menu name" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="weui-cells__title">Price preferences</div>
+                        <div class="weui-cells weui-cells_form">
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd"><label class="weui-label">small box</label></div>
+                                <div class="weui-cell__bd">
+                                    <input class="weui-input" type="number" pattern="[0-9]*" placeholder="0"/>
+                                </div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd"><label class="weui-label">medium box</label></div>
+                                <div class="weui-cell__bd">
+                                    <input class="weui-input" type="number" pattern="[0-9]*" placeholder="0"/>
+                                </div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd"><label class="weui-label">large box</label></div>
+                                <div class="weui-cell__bd">
+                                    <input class="weui-input" type="number" pattern="[0-9]*" placeholder="0"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weui-dialog__ft">
+                        <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default">cancle</a>
+                        <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" id="saveBtn">save</a>
+                    </div>
+                </div>
+            </div>
+            <!--END newDialog-->
+
+        </div>
+    </div>
+</div>
+<div class="weui-tabbar">
+    <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on" data-id="o_onHand">
+        <span style="display: inline-block;position: relative;">
+            <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+            <span class="weui-badge" style="position: absolute;top: -2px;right: -13px;">2</span>
+        </span>
+        <p class="weui-tabbar__label">Order on hand</p>
+    </a>
+    <a href="javascript:;" class="weui-tabbar__item" data-id="o_history">
+        <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+        <p class="weui-tabbar__label">Order history</p>
+    </a>
+    <a href="javascript:;" class="weui-tabbar__item" data-id="menu_mgnt">
+        <span style="display: inline-block;position: relative;">
+            <img src="./images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+            <!--<span class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span>-->
+        </span>
+        <p class="weui-tabbar__label">Menu management</p>
+    </a>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $('.weui-tabbar__item').on('click', function () {        
+            $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
+            
+            var id = $(this).data('id');
+            console.log(id);
+            $('.tab_active').fadeOut('fast',function(){
+                $(this).removeClass('tab_active');
+                $('#'+id).fadeIn('fast',function(){
+                    $(this).addClass('tab_active');
+                });
+            });
+        });
+        var $toast = $('#toast');
+        $('#saveBtn').on('click', function(){
+            if ($toast.css('display') != 'none') return;
+
+            $toast.fadeIn(100);
+            setTimeout(function () {
+                $toast.fadeOut(100);
+            }, 2000);
+        });
+        var $deleteDialog = $('#deleteDialog');
+        var $newDialog = $('#newDialog');
+        newDialog
+
+        $('#dialogs').on('click', '.weui-dialog__btn', function(){
+            $(this).parents('.js_dialog').fadeOut(200);
+        });
+        $('.deleteBtn').on('click', function(){
+            $deleteDialog.fadeIn(200);
+        });        
+        $('#addBtn').on('click', function(){
+            $newDialog.fadeIn(200);
+        }); 
+    });
+</script>
+<script src="./zepto.min.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+<script src="./app-controller.js"></script>
+</body>
+</html>

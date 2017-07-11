@@ -1,0 +1,10 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.apps import AppConfig
+
+
+class CustomerConfig(AppConfig):
+    name = 'customer'
+    def ready(self):
+        from . import handlers  # noqa

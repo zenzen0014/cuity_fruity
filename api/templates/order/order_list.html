@@ -1,0 +1,163 @@
+
+
+{% extends 'order/base.html' %}
+
+{% block content %}
+
+<div class="page actionsheet js_show" id="order_main_page">
+    <div class="page__hd" style="margin-top:-30px;margin-bottom:-30px">
+        <h1 class="page__title">Order Form</h1>
+    </div>
+    <div class="page__bd page__bd_spacing">
+        <!-- <a href="javascript:;" class="weui-btn weui-btn_default" id="add_order">Add Order</a> -->
+        <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary" id="add_order" data-url="{% url 'order_create_form_ajax' %}">Add Order</a>
+    </div>
+    
+    <div class="weui-skin_android" id="androidActionsheet" style="display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-actionsheet" style="width: 80%;">
+            <div class="weui-actionsheet__menu" id="order_add_form">
+
+
+            </div>
+        </div>
+    </div>
+
+    <div id ="order_list_parent" style="position: relative;height: 80%;overflow: hidden;">
+        <div id ="order_list_child" style="height: 80%;overflow-y: scroll;">
+          {% include 'order/includes/partial_order_list.html' %}
+        </div>
+    </div>
+
+    <!--END actionSheet-->
+  <div class="page__ft j_bottom">
+      <a href="javascript:home()"><img src="{{ STATIC_URL }}/assets/weui/images/icon_footer_link.png"></a>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+    $(function () {
+      var $androidActionSheet = $('#androidActionsheet');
+      var loadForm = function () {
+        var btn = $(this);
+        $.ajax({
+          url: btn.attr("data-url"),
+          type: 'get',
+          dataType: 'json',
+          beforeSend: function () {
+            $androidActionSheet.fadeIn(200);
+          },
+          success: function (data) {
+            $("#order_add_form").html(data.html_form);
+            $("#html_order_list").html(data.html_order_list);
+            console.log(data);
+            
+          }
+        });
+      };
+
+      var saveForm = function () {
+        var form = $(this);
+        $.ajax({
+          url: form.attr("action"),
+          data: form.serialize(),
+          type: form.attr("method"),
+          dataType: 'json',
+          success: function (data) {
+            $("#order_add_form").html(data.html_form);
+            $("#html_order_list").html(data.html_order_list);
+            console.log(data);
+          }
+        });
+        return false;
+      };
+
+      $("#add_order").click(loadForm);
+      $("#order_add_form-book").on("submit", ".form_add_order .submit", saveForm);
+
+      $(".submit").on("click", saveForm);
+
+      // Update book
+      $(".icon_edit").on("click", loadForm);
+      // $("#modal-book").on("submit", ".js-book-update-form", saveForm);
+
+      $(".icon_delete").on("click", loadForm);
+      // $("#modal-book").on("submit", ".js-book-delete-form", saveForm);
+
+      $("#androidActionsheet").on("click", ".close", function(){
+          console.log("Close");
+          $androidActionSheet.fadeOut(200);
+      });
+
+    });
+    // android
+    // $(function(){
+    //     var $androidActionSheet = $('#androidActionsheet');
+    //     var $androidMask = $androidActionSheet.find('.weui-mask');
+
+    //     $("#add_order").on('click', function(){
+            
+    //         $androidMask.on('click',function () {
+    //             $androidActionSheet.fadeOut(200);
+    //         });
+    //         $.ajax({
+    //           url: '/orders/order_create_form_ajax',
+    //           type: 'get',
+    //           dataType: 'json',
+    //           beforeSend: function () {
+    //             $androidActionSheet.fadeIn(200);
+    //           },
+    //           success: function (data) {
+    //             $("#order_add_form").html(data.html_order_create);
+    //             $("#html_order_list").html(data.html_order_list);
+    //             console.log(data);
+    //           }
+
+    //         });
+    //         console.log("showAndroidActionSheet kilcked");
+    //     });
+        
+
+    //     $("#order_add_form-book").on("submit", ".form_add_order", function () {
+    //       var form = $(this);
+    //       console.log(form.serialize());
+    //       $.ajax({
+    //         url: '/orders/order_add',//form.attr("action"),
+    //         data: form.serialize(),
+    //         type: form.attr("method"),
+    //         dataType: 'json',
+    //         success: function (data) {
+    //          console.log(data);
+    //          return false;
+    //         }
+    //       });
+    //       return false;
+    //     });
+
+    //     $("#icon_edit").on("click", function(){
+    //         console.log("icon_edit");
+    //         $androidMask.on('click',function () {
+    //             $androidActionSheet.fadeOut(200);
+    //         });
+    //         $.ajax({
+    //           url: '/orders/order_update_form_ajax/'+$(this).attr("data_id"),
+    //           type: 'get',
+    //           dataType: 'json',
+    //           beforeSend: function () {
+    //             $androidActionSheet.fadeIn(200);
+    //           },
+    //           success: function (data) {
+    //             $("#order_add_form").html(data.html_order_create);
+    //           }
+
+    //         });
+    //     });
+
+
+    // });
+</script>
+
+
+{% endblock %}
+

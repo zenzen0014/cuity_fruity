@@ -1,0 +1,27 @@
+{% load widget_tweaks %}
+
+<form method="post" action="{% url 'order_create_form_ajax' %}" class="form_add_order">
+  {% csrf_token %}
+
+    <div class="weui-actionsheet__cell">From Oder</div>               
+
+    {% for field in form %}
+      <div class="form-group{% if field.errors %} has-error{% endif %}">
+         <div class="weui-actionsheet__cell">
+            <div class="weui-cell" style="margin-top: -15px; margin-bottom: -15px">
+              <div class="weui-cell__hd"><label for="{{ field.id_for_label }}" class="weui-label">{{ field.label }}</label></div>
+              <div class="weui-cell__bd">
+                {% render_field field class="form-control weui-input" %}
+                <!-- <input class="weui-input"> -->
+              </div>
+            </div>
+          </div>
+      </div>
+    {% endfor %}
+
+    <div class="weui-actionsheet__cell" style="align-self: left">
+        <a class="weui-btn weui-btn_mini weui-btn_warn close">Close</a>
+        <button type="submit" class="weui-btn weui-btn_mini weui-btn_primary submit">Create</button>
+    </div>
+
+</form>

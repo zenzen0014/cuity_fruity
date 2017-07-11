@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<html lang="en">
+
+    <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+          <title>{{ app_name }}</title>
+
+
+          <link rel="stylesheet" href="{{ STATIC_URL }}/assets/css/weui.css"/>
+          <link rel="stylesheet" href="{{ STATIC_URL }}/assets/css/example.css"/>
+
+          <!-- <script src="{{ STATIC_URL }}/assets/js/jquery-2.1.4.min.js"></script> -->
+
+          {% block head %}
+          {% endblock %}
+
+    </head>
+
+
+    <body ontouchstart>
+       <div class="weui-toptips weui-toptips_warn js_tooltips">错误提示</div>
+
+        <div id="container" class="container">
+          {% block content %}
+          {% endblock %}
+        </div>
+
+
+      <script src="{{ STATIC_URL }}/assets/js/zepto.min.js"></script>
+      <script type="{{ STATIC_URL }}/assets/js/jweixin-1.0.0.js"></script>
+      <script src="{{ STATIC_URL }}/assets/js/weui.min.js"></script>
+      <script src="{{ STATIC_URL }}/assets/js/app-controller.js"></script>
+
+
+      {% block javascript %}
+      {% endblock %}
+
+    </body>
+</html>
+
+
