@@ -1,0 +1,15 @@
+https://github.com/hamax/django-serverpush
+
+https://www.sourcelair.com/blog/articles/115/django-channels-chat
+
+https://gearheart.io/blog/creating-a-chat-with-django-channels/
+
+http://yz.mit.edu/wp/web-sockets-tutorial-with-simple-python-server/
+
+https://ferretfarmer.net/2013/09/05/tutorial-real-time-chat-with-django-twisted-and-websockets-part-2/
+
+https://github.com/jrief/django-websocket-redis
+
+http://blog.jupo.org/2011/08/13/real-time-web-apps-with-django-and-websockets/
+
+https://www.toptal.com/tornado/simple-python-websocket-server

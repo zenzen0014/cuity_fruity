@@ -1,11 +1,19 @@
 This is My Index
+{{ context }}
+
+{% for v, i in context %}
+	{{ v.menu_id }}
+{% empty %}
+    No Data
+{% endfor %}
+
+
 
 {% for v in context.data %}
 	{{ v.menu_name }} {{ v.menu_detail }} {{ v.price }}
 {% empty %}
     No Data
 {% endfor %}
-
 
 
 {{context.qs.menu_id}}
@@ -25,3 +33,36 @@ This is My Index
 {% empty %}
     No Data
 {% endfor %}
+
+
+<script src="{{ STATIC_URL }}/assets/js/jquery-2.1.4.min.js"></script>
+
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		get_data();
+		post_data();
+	});
+
+	function get_data() {
+		$.get("test_get").done(function(json){
+			// console.log(json);
+		});
+	}
+
+	function post_data(){
+		var data = {
+				"user_id"  	: 3,
+                "type"		: "zendi keren",
+                "mobile_no"	: "13021919922"
+        }
+        
+	    $.post("test_post",data).done(function(json){
+	    	$.each(json, function (i, v) {
+	        	console.log(v.mobile_no);
+	    	});
+	    });
+	}
+
+
+</script>

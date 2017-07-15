@@ -1,6 +1,6 @@
 {% extends "main_app/base.html" %}
 {% block content %}
-
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=X05nVa9itUmn6KO1KLEWqxNGyYIsO6Wu"></script>
 
 
     <div class="weui-toptips weui-toptips_warn js_tooltips">Error</div>
@@ -12,137 +12,41 @@
     <div class="page__bd page__bd_spacing" style="height: 100%;">
         <div class="weui-tab">
             <div class="tab__panel">
+
                 <div class="weui-tab__content " id="d_taskFinder">
                     <div class="weui-panel__hd">Task finder</div>
                     <div class="weui-panel__bd">
-                        <div class="weui-form-preview">
-                            <div class="weui-form-preview__hd">
-                                <div class="weui-form-preview__item">
-                                    <label class="weui-form-preview__label">Estimated earn</label>
-                                    <em class="weui-form-preview__value">¥4.00</em>
-                                </div>
-                            </div>
-                            <div class="weui-form-preview__bd">
-                                <div class="weui-form-preview__item">
-                                    <label class="weui-form-preview__label">Goods size and amount</label>
-                                    <span class="weui-form-preview__value">small x 2, large x 2</span>
-                                </div>
-                                <div class="weui-form-preview__item">
-                                    <label class="weui-form-preview__label">Pick from</label>
-                                    <span class="weui-form-preview__value">北京理工大学(中关村校区)-14号学生公寓</span>
-                                </div>
-                                <div class="weui-form-preview__item">
-                                    <label class="weui-form-preview__label">Deliver to</label>
-                                    <span class="weui-form-preview__value">北京理工大学(中关村校区)-光电学院</span>
-                                </div>
-                            </div>
-                            <div class="weui-form-preview__ft">
-                                <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">Accept</a>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="weui-form-preview">
-                            <div class="weui-form-preview__hd">
-                                <label class="weui-form-preview__label">付款金额</label>
-                                <em class="weui-form-preview__value">¥2400.00</em>
-                            </div>
-                            <div class="weui-form-preview__bd">
-                                <div class="weui-form-preview__item">
-                                    <label class="weui-form-preview__label">商品</label>
-                                    <span class="weui-form-preview__value">电动打蛋机</span>
-                                </div>
-                                <div class="weui-form-preview__item">
-                                    <label class="weui-form-preview__label">标题标题</label>
-                                    <span class="weui-form-preview__value">名字名字名字</span>
-                                </div>
-                                <div class="weui-form-preview__item">
-                                    <label class="weui-form-preview__label">标题标题</label>
-                                    <span class="weui-form-preview__value">很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字</span>
-                                </div>
-                            </div>
-                            <div class="weui-form-preview__ft">
-                                <a class="weui-form-preview__btn weui-form-preview__btn_default" href="javascript:">辅助操作</a>
-                                <button type="submit" class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">操作</button>
-                            </div>
+                        <div class="weui-form-preview" id="tab_task_finder"> 
+
                         </div>
                     </div>
                 </div>
+
+
+
                 <div class="weui-tab__content tab_active" id="d_taskProcess">
                     <div class="weui-panel__hd">Task on process</div>
                     <div class="weui-panel__bd">
-                        <div class="weui-form-preview">
-                            <div class="weui-form-preview__hd">
+                        <div class="weui-form-preview" id="tab_task_on_process">
+
+                            <div class="weui-form-preview__hd" id="timer">
                                 <div class="weui-form-preview__item">
                                     <label class="weui-form-preview__label">Time limit</label>
                                     <em class="weui-form-preview__value" id="countdown_orderid"></em>
                                 </div>
                             </div>
-                            <div class="weui-form-preview__bd">
-                                <div class="weui-form-preview__item">
-                                    <label class="weui-form-preview__label">Goods size and amount</label>
-                                    <span class="weui-form-preview__value">small x 2, large x 2</span>
-                                </div>
+                            <div class="weui-form-preview__bd" id="tab_task_on_process_body">
+                                
+                                
+                            </div>
+                            <div class="weui-form-preview__bd" id="tab_task_on_process_body_btn">
+                               
+                            </div>
 
-                                <div class="weui-form-preview__item">
-                                    <label class="weui-form-preview__label">Pick from</label>
-                                    <span class="weui-form-preview__value">北京理工大学(中关村校区)-14号学生公寓</span>
-                                    <div class="weui-cells weui-cells_checkbox">
-                                        <label class="weui-cell weui-check__label" for="checkPicked">
-                                            <div class="weui-cell__hd">
-                                                <input type="checkbox" class="weui-check" name="checkbox1" id="checkPicked" />
-                                                <i class="weui-icon-checked"></i>
-                                            </div>
-                                            <div class="weui-cell__bd">
-                                                <p>Picked up from supplier</p>
-                                                <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary" id="showSupplierMap">show map</a>
-                                                <div id="supplierMap" style="display:none;height:200px;width:100%"></div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                <div class="weui-form-preview__item">
-                                    <label class="weui-form-preview__label">Deliver to</label>
-                                    <span class="weui-form-preview__value">北京理工大学(中关村校区)-光电学院</span>
-                                    <div class="weui-cells weui-cells_checkbox">
-                                        <label class="weui-cell weui-check__label" for="checkDelivered">
-                                            <div class="weui-cell__hd">
-                                                <input type="checkbox" class="weui-check" name="checkbox1" id="checkDelivered" />
-                                                <i class="weui-icon-checked"></i>
-                                            </div>
-                                            <div class="weui-cell__bd">
-                                                <p>Delivered to customer</p>
-                                                <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary" id="showCustomerMap">show map</a>
-                                                <div id="customerMap" style="display:none;height:200px;width:100%"></div>
-                                            </div>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
+
                         <div class="weui-cells weui-cells_checkbox">
-                            <!--<label class="weui-cell weui-check__label" for="checkPicked">
-                                <div class="weui-cell__hd">
-                                    <input type="checkbox" class="weui-check" name="checkbox1" id="checkPicked" />
-                                    <i class="weui-icon-checked"></i>
-                                </div>
-                                <div class="weui-cell__bd">
-                                    <p>Pick up from supplier</p>
-                                    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary" id="showSupplierMap">show map</a>
-                                    <div id="supplierMap" style="display:none;height:200px;width:100%"></div>
-                                </div>
-                            </label>
-                            <label class="weui-cell weui-check__label" for="checkDelivered">
-                                <div class="weui-cell__hd">
-                                    <input type="checkbox" name="checkbox1" class="weui-check" id="checkDelivered"/>
-                                    <i class="weui-icon-checked"></i>
-                                </div>
-                                <div class="weui-cell__bd">
-                                    <p>Delivered to customer</p>
-                                    <a href="javascript:;" class="weui-btn weui-btn_default" id="showDeliverMap">Show deliver map</a>
-                                </div>
-                            </label>-->
-                            <div class="weui-btn-area">
-                                <a href="#" class="weui-btn weui-btn_primary weui-btn_disabled" id="collectBtn">Collect money</a>
-                            </div>
+                           
                             <div id="dialogs">
                                 <!--BEGIN dialog2-->
                                 <div class="js_dialog" id="pickDialog" style="display: none;">
@@ -201,80 +105,18 @@
                                 <!--END dialog2-->
                             </div>
                         </div>  
-                        </div>                  
+                    </div>                  
                 </div>
-                </div>
+
+
+
                 <div class="weui-tab__content" id="d_taskHistory">
                     <div class="weui-cells__title">Task history</div>
 
-                            <div class="weui-form-preview">
-                                <div class="weui-form-preview__hd">
-                                    <div class="weui-form-preview__item">
-                                        <label class="weui-form-preview__label">Order payment</label>
-                                        <em class="weui-form-preview__value">¥5</em>
-                                    </div>
-                                </div>
-                                <div class="weui-form-preview__bd">
-                                    <div class="weui-form-preview__item">
-                                        <label class="weui-form-preview__label">Order name</label>
-                                        <span class="weui-form-preview__value">Banana apple mix</span>
-                                    </div>
-                                    <div class="weui-form-preview__item">
-                                        <label class="weui-form-preview__label">Date of pickup from supplier</label>
-                                        <span class="weui-form-preview__value">2017-07-10 1:44PM</span>
-                                    </div>
-                                    <div class="weui-form-preview__item">
-                                        <label class="weui-form-preview__label">Data of delivery</label>
-                                        <span class="weui-form-preview__value">2017-07-10 1:57PM</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="weui-form-preview">
-                                <div class="weui-form-preview__hd">
-                                    <div class="weui-form-preview__item">
-                                        <label class="weui-form-preview__label">Order payment</label>
-                                        <em class="weui-form-preview__value">¥5</em>
-                                    </div>
-                                </div>
-                                <div class="weui-form-preview__bd">
-                                    <div class="weui-form-preview__item">
-                                        <label class="weui-form-preview__label">Order name</label>
-                                        <span class="weui-form-preview__value">Banana apple mix</span>
-                                    </div>
-                                    <div class="weui-form-preview__item">
-                                        <label class="weui-form-preview__label">Date of pickup from supplier</label>
-                                        <span class="weui-form-preview__value">2017-07-10 1:44PM</span>
-                                    </div>
-                                    <div class="weui-form-preview__item">
-                                        <label class="weui-form-preview__label">Data of delivery</label>
-                                        <span class="weui-form-preview__value">2017-07-10 1:57PM</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="weui-form-preview">
-                                <div class="weui-form-preview__hd">
-                                    <div class="weui-form-preview__item">
-                                        <label class="weui-form-preview__label">Order payment</label>
-                                        <em class="weui-form-preview__value">¥5</em>
-                                    </div>
-                                </div>
-                                <div class="weui-form-preview__bd">
-                                    <div class="weui-form-preview__item">
-                                        <label class="weui-form-preview__label">Order name</label>
-                                        <span class="weui-form-preview__value">Banana apple mix</span>
-                                    </div>
-                                    <div class="weui-form-preview__item">
-                                        <label class="weui-form-preview__label">Date of pickup from supplier</label>
-                                        <span class="weui-form-preview__value">2017-07-10 1:44PM</span>
-                                    </div>
-                                    <div class="weui-form-preview__item">
-                                        <label class="weui-form-preview__label">Data of delivery</label>
-                                        <span class="weui-form-preview__value">2017-07-10 1:57PM</span>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="weui-form-preview" id="tab_task_history">
+                        
+                    </div>
+                           
                 </div>
             </div>
             </div>
@@ -283,86 +125,118 @@
                 <a href="javascript:;" class="weui-tabbar__item" data-id="d_taskFinder">
                     <span style="display: inline-block;position: relative;">
                         <img src="{{ STATIC_URL }}/assets/images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
-                        <span class="weui-badge" style="position: absolute;top: -2px;right: -27px;">new</span>
+                        <span class="weui-badge-success" style="position: absolute;top: -2px;right: -13px;" id="count_tf"></span>
                     </span>
                     <p class="weui-tabbar__label">Task finder</p>
                 </a>
+
                 <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on" data-id="d_taskProcess">
-                    <img src="{{ STATIC_URL }}/assets/images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                    <span style="display: inline-block;position: relative;">
+                        <img src="{{ STATIC_URL }}/assets/images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
+                        <span class="weui-badge-warning" style="position: absolute;top: -2px;right: -13px;" id="count_tp"></span>
+                    </span>
                     <p class="weui-tabbar__label">Task on hand</p>
                 </a>
                 <a href="javascript:;" class="weui-tabbar__item" data-id="d_taskHistory">
                     <span style="display: inline-block;position: relative;">
                         <img src="{{ STATIC_URL }}/assets/images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
-                        <!--<span class="weui-badge weui-badge_dot" style="position: absolute;top: 0;right: -6px;"></span>-->
+                        <span class="weui-badge-danger" style="position: absolute;top: -2px;right: -13px;" id="count_th"></span>
                     </span>
                     <p class="weui-tabbar__label">Task history</p>
                 </a>
             </div>
         
 </div>
+
+
+
+
+
+
+
+
+<!--BEGIN toast-->
+    <div id="toast" style="display: none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+            <p class="weui-toast__content">Success</p>
+        </div>
+    </div>
+    <!--end toast-->
+
+
+
+
+
+
 <script type="text/javascript">
     $(function(){
         $('.weui-tabbar__item').on('click', function () {        
             $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
             
             var id = $(this).data('id');
-            console.log(id);
+            // console.log(id);
+            get_all_data();
             $('.tab_active').fadeOut('fast',function(){
                 $(this).removeClass('tab_active');
+                $("#collectBtn").attr("href", "#").addClass("weui-btn_disabled");
                 $('#'+id).fadeIn('fast',function(){
                     $(this).addClass('tab_active');
                 });
-            });
-            
+            });          
         });
-        $( ".weui-cells_checkbox").change( function(){
+
+        $( "#tab_task_on_process_body").on("change", ".weui-cells_checkbox", function(){
             console.log("clieced");
             if($( "#checkPicked" ).prop("checked")&&$( "#checkDelivered" ).prop("checked")){
-                console.log("pass");
+                // console.log("pass");
                 $("#collectBtn").attr("href", "#msg_success").removeClass("weui-btn_disabled");
             }else{
                 $("#collectBtn").attr("href", "#").addClass("weui-btn_disabled");
             }
         });
-        $('#showSupplierMap').on('click',function(){
-            console.log("init map");
+
+        $('#tab_task_on_process_body').on('click', '#showSupplierMap',function(){
+            // console.log();
             $('#supplierMap').fadeIn('fast',function(){
                 var map = new BMap.Map("supplierMap");
-                var point = new BMap.Point(116.331398,39.897445);
+                var point = new BMap.Point($(this).attr("lat"), $(this).attr("lng"));
                 map.centerAndZoom(point,12);
                     // 创建地址解析器实例
                     var myGeo = new BMap.Geocoder();
                     // 将地址解析结果显示在地图上,并调整地图视野
-                    myGeo.getPoint("北京市海淀区上地10街", function(point){
+                    myGeo.getPoint($(this).attr("geo"), function(point){
                         if (point) {
                             map.centerAndZoom(point, 16);
                             map.addOverlay(new BMap.Marker(point));
                         }else{
-                            alert("您选择地址没有解析到结果!");
+                            alert($(this).attr("geo"));
                         }
                 }, "北京市");
             });
         });
-        $('#showCustomerMap').on('click',function(){
-            console.log("init map");
+
+        $('#tab_task_on_process_body').on('click', '#showCustomerMap',function(){
+            // console.log("init map");
             $('#customerMap').fadeIn('fast',function(){
                 var map = new BMap.Map("customerMap");
-                var point = new BMap.Point(162.331398,39.817445);
+                var point = new BMap.Point($(this).attr("lat"), $(this).attr("lng"));
                 map.centerAndZoom(point,12);
                     // 创建地址解析器实例
                     var myGeo = new BMap.Geocoder();
                     // 将地址解析结果显示在地图上,并调整地图视野
-                    myGeo.getPoint("北京市海淀区上地10街", function(point){
+                    myGeo.getPoint($(this).attr("geo"), function(point){
                         if (point) {
                             map.centerAndZoom(point, 16);
                             map.addOverlay(new BMap.Marker(point));
                         }else{
-                            alert("您选择地址没有解析到结果!");
+                            alert($(this).attr("geo"));
                         }
                 }, "北京市");
             });
         });
+
         var min = 60;
         var sec = 01;
         setInterval(function(){
@@ -374,6 +248,8 @@
                 sec = 60;
                 if (min == 0){
                         //release the task to others delivery man
+                    min = 60;
+                    sec = 01;
                 }
             }
         },1000);      
@@ -391,6 +267,7 @@
         $('#showDeliverMap').on('click', function(){
             $deliverDialog.fadeIn(200);
         });
+
         var tmpl = '<li class="weui-uploader__file" style="background-image:url(#url#)"></li>',
             $gallery = $("#gallery"), $galleryImg = $("#galleryImg"),
             $uploaderInput = $("#uploaderInput"),
@@ -411,14 +288,262 @@
                 $uploaderFiles.append($(tmpl.replace('#url#', src)));
             }
         });
+
         $uploaderFiles.on("click", "li", function(){
             $galleryImg.attr("style", this.getAttribute("style"));
             $gallery.fadeIn(100);
         });
+
         $gallery.on("click", function(){
             $gallery.fadeOut(100);
         });
     });
+
+    var store_id = 5;
+    var user_id = 2;
+
+    $(document).ready(function() {
+        get_all_data();
+    });
+
+    function get_all_data(){
+        get_delivery_task_finder();
+        get_delivery_task_on_hand();
+        get_delivery_task_history();
+    }
+
+    setTimeout(function(){
+        get_all_data();
+    }, 60000);
+
+
+    function get_delivery_task_finder(){
+        $.get("get_delivery_task_finder", function(json){
+            data = {"order_id": 3}
+            $.ajax({
+                url: "get_delivery_task_finder",
+                data: data,
+                type: "POST",
+                dataType: 'json',
+                success: function (json) {
+                    // console.log(json);
+                    if(_.isEmpty(json)==false){
+                        $("#tab_task_finder").empty();
+                        $.each(json, function (i, v) {
+                            if(_.isEmpty(v.ORDER_ID)==false || v.ORDER_ID!=null){
+                                split_parcel = v.PARCEL_DESC.split(",");
+
+                                // $.each(split_parcel, function (m, n) {
+                                    $("#tab_task_finder").append(
+                                        '<div class="weui-form-preview__hd">'+
+                                            '<div class="weui-form-preview__item">'+
+                                                '<label class="weui-form-preview__label">Estimated earn</label>'+
+                                                '<em class="weui-form-preview__value">¥2.00</em>'+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<div class="weui-form-preview__bd">'+
+                                            '<div class="weui-form-preview__item">'+
+                                                '<label class="weui-form-preview__label">Goods size and amount</label>'+
+                                                '<span class="weui-form-preview__value">'+v.PARCEL_DESC+'</span>'+
+                                            '</div>'+
+                                            '<div class="weui-form-preview__item">'+
+                                                '<label class="weui-form-preview__label">Pick from</label>'+
+                                                '<span class="weui-form-preview__value">'+v.STORE_LOCATION+'</span>'+
+                                            '</div>'+
+                                            '<div class="weui-form-preview__item">'+
+                                                '<label class="weui-form-preview__label">Deliver to</label>'+
+                                                '<span class="weui-form-preview__value">'+v.CUSTOMER_LOCATION+'</span>'+
+                                            '</div>'+
+                                            '<div class="weui-form-preview__item">'+
+                                                '<label class="weui-form-preview__label">Order Date</label>'+
+                                                '<span class="weui-form-preview__value">'+new Date(v.TIME_STAMP).toDateString()+'</span>'+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<div class="weui-form-preview__ft">'+
+                                            '<a class="weui-form-preview__btn weui-form-preview__btn_primary accept_delivery" order_id="'+v.ORDER_ID+'" href="#">Accept</a>'+
+                                        '</div><hr/>'
+                                    );
+                                // });
+                                $("#count_tf").text(json.length);
+                            }
+                        });
+                    }
+                }
+            });
+        });
+    }
+
+
+
+    $("#tab_task_finder").on("click", ".accept_delivery", function(){
+        data = {"order_id": $(this).attr("order_id")};
+        // console.log(data);
+        $.ajax({
+            url: "update_delivery_task_finder",
+            data: data,
+            type: "POST",
+            dataType: 'json',
+            success: function (json) {
+                // console.log(json);
+                get_all_data(); 
+                show_toast();               
+            }
+        });
+    });
+
+    function show_toast(){
+        var $toast = $('#toast');
+        if ($toast.css('display') != 'none') return;
+        $toast.fadeIn(100);
+        setTimeout(function () {
+            $toast.fadeOut(100);
+        }, 2000);
+    }
+
+
+    function get_delivery_task_on_hand(){
+        data = {"order_id": 3}
+        $.ajax({
+            url: "get_delivery_task_on_hand",
+            data: data,
+            type: "POST",
+            dataType: 'json',
+            success: function (json) {
+                // console.log(json);
+                if(_.isEmpty(json)==false){
+                    $("#tab_task_on_process_body").empty();
+                    $("#tab_task_on_process_body_btn").empty();
+                    $.each(json, function (i, v) {
+                        if(_.isEmpty(v.ORDER_ID)==false || v.ORDER_ID!=null){
+                            $("#count_tp").text(json.length);
+                            $("#tab_task_on_process").show();
+                            $("#tab_task_on_process_body").append(
+                                    '<div class="weui-form-preview__item">'+
+                                        '<label class="weui-form-preview__label">Goods size and amount</label>'+
+                                        '<span class="weui-form-preview__value">'+v.PARCEL_DESC+'</span>'+
+                                    '</div>'+
+                                    '<div class="weui-form-preview__item">'+
+                                        '<label class="weui-form-preview__label">Pick from</label>'+
+                                        '<span class="weui-form-preview__value">'+v.STORE_LOCATION+'</span>'+
+                                        '<div class="weui-cells weui-cells_checkbox">'+
+                                            '<label class="weui-cell weui-check__label" for="checkPicked">'+
+                                                '<div class="weui-cell__hd">'+
+                                                    '<input type="checkbox" class="weui-check" name="checkbox1" id="checkPicked" />'+
+                                                    '<i class="weui-icon-checked"></i>'+
+                                                '</div>'+
+                                                '<div class="weui-cell__bd">'+
+                                                    '<p>Picked up from supplier</p>'+
+                                                    '<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary" id="showSupplierMap" geo='+v.STORE_LOCATION+' lat='+v.STORE_LAT+' lng='+v.STORE_LONG+'>show map</a>'+
+                                                    '<div id="supplierMap" style="display:none;height:200px;width:100%"></div>'+
+                                                '</div>'+
+                                            '</label>'+
+                                        '</div>'+
+                                    '</div>'+
+                                    '<div class="weui-form-preview__item">'+
+                                        '<label class="weui-form-preview__label">Deliver to</label>'+
+                                        '<span class="weui-form-preview__value">'+v.CUSTOMER_LOCATION+'</span>'+
+                                        '<div class="weui-cells weui-cells_checkbox">'+
+                                            '<label class="weui-cell weui-check__label" for="checkDelivered">'+
+                                                '<div class="weui-cell__hd">'+
+                                                    '<input type="checkbox" class="weui-check" name="checkbox1" id="checkDelivered" />'+
+                                                    '<i class="weui-icon-checked"></i>'+
+                                                '</div>'+
+                                                '<div class="weui-cell__bd">'+
+                                                    '<p>Delivered to customer</p>'+
+                                                    '<a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary" id="showCustomerMap" geo='+v.CUSTOMER_LOCATION+' lat='+v.CUSTOMER_LAT+' lng='+v.CUSTOMER_LONG+'>show map</a>'+
+                                                    '<div id="customerMap" style="display:none;height:200px;width:100%"></div>'+
+                                                '</div>'+
+                                            '</label>'+
+                                        '</div>'+
+                                    '</div>'
+                            );
+                            $("#tab_task_on_process_body_btn").append(
+                                '<div class="weui-btn-area">'+
+                                    '<a href="#" class="weui-btn weui-btn_primary weui-btn_disabled" order_id='+v.ORDER_ID+' id="collectBtn">Collect money</a>'+
+                                '</div>'
+                            );
+                        }else{
+                            $("#tab_task_on_process").hide();
+                        }
+                    });
+                    
+                }else{
+                    $("#tab_task_on_process_body").empty();
+                    $("#tab_task_on_process_body_btn").empty();
+                    $("#timer").hide();
+                }
+            }
+        });
+    }
+
+
+    function get_delivery_task_history(){
+        data = {"order_id": 3}
+        $.ajax({
+            url: "get_delivery_task_history",
+            data: data,
+            type: "POST",
+            dataType: 'json',
+            success: function (json) {
+                if(_.isEmpty(json)==false){
+                    $("#tab_task_history").empty();
+                    // console.log(json);
+                    $.each(json, function (i, v) {
+                        
+                        
+                        $("#tab_task_history").append(
+                            '<div class="weui-form-preview__hd">'+
+                                '<div class="weui-form-preview__item">'+
+                                    '<label class="weui-form-preview__label">Order Payment</label>'+
+                                    '<em class="weui-form-preview__value">¥2.00</em>'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="weui-form-preview__bd">'+
+                                '<div class="weui-form-preview__item">'+
+                                    '<label class="weui-form-preview__label">Order name</label>'+
+                                    '<span class="weui-form-preview__value">'+v.MENU_NAME+'</span>'+
+                                '</div>'+
+                                '<div class="weui-form-preview__item">'+
+                                    '<label class="weui-form-preview__label">Pick from</label>'+
+                                    '<span class="weui-form-preview__value">'+v.STORE_LOCATION+'</span>'+
+                                '</div>'+
+                                '<div class="weui-form-preview__item">'+
+                                    '<label class="weui-form-preview__label">Deliver to</label>'+
+                                    '<span class="weui-form-preview__value">'+v.CUSTOMER_LOCATION+'</span>'+
+                                '</div>'+
+                                '<div class="weui-form-preview__item">'+
+                                    '<label class="weui-form-preview__label">Data of delivery</label>'+
+                                    '<span class="weui-form-preview__value">'+new Date(v.TIME_STAMP).toDateString()+'</span>'+
+                                '</div>'+
+                            '</div>'+
+                            '<hr/>'
+                        );
+                    });
+                    $("#count_th").text(json.length);
+                }
+            }
+        });
+    }
+
+
+    $("#tab_task_on_process_body_btn").on("click", '#collectBtn', function(){
+        data = {"order_id": $(this).attr("order_id")}
+        $.ajax({
+            url: "delivery_collect_money",
+            data: data,
+            type: "POST",
+            dataType: 'json',
+            success: function (json) {
+                console.log(json);
+                get_all_data();
+
+            }
+        });
+    });
+
+
+
+
 </script>
 <script type="text/html" id="tpl_msg_success">
 <div class="page">
@@ -450,6 +575,7 @@
 
 
 
+<script src="{{ STATIC_URL }}/assets/js/underscore-min.js"></script>
 
 
 

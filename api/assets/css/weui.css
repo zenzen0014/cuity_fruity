@@ -2003,12 +2003,38 @@ a.weui-media-box:active{
   vertical-align:0;
   top:-0.16em;
 }
-.weui-badge{
+.weui-badge-danger{
   display:inline-block;
   padding:.15em .4em;
   min-width:8px;
   border-radius:18px;
   background-color:#F43530;
+  color:#FFFFFF;
+  line-height:1.2;
+  text-align:center;
+  font-size:12px;
+  vertical-align:middle;
+}
+
+.weui-badge-warning{
+  display:inline-block;
+  padding:.15em .4em;
+  min-width:8px;
+  border-radius:18px;
+  background-color:#f4950a;
+  color:#FFFFFF;
+  line-height:1.2;
+  text-align:center;
+  font-size:12px;
+  vertical-align:middle;
+}
+
+.weui-badge-success{
+  display:inline-block;
+  padding:.15em .4em;
+  min-width:8px;
+  border-radius:18px;
+  background-color:#170af4;
   color:#FFFFFF;
   line-height:1.2;
   text-align:center;

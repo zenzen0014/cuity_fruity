@@ -12,6 +12,8 @@ from django.db import connection
 from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
 
+from itertools import chain
+
 import json
 
 
@@ -21,11 +23,89 @@ def home(request):
     user = users.objects.all()
     qs 	 = menus.objects.select_related().order_by("-menu_id")#.filter(menu_id=2)
     context = {'data': menu, 'user': user, 'qs': qs}
-    print qs.query
-    return render(request, 'index.html', {"context": context})
+
+    cursor = connection.cursor()
+    cursor.execute(
+    	'''select
+			a.menu_id as id,
+			a.menu_name,
+			a.menu_detail,
+			a.menu_img,
+			a.menu_status,
+			a.owner_id,
+			b.type,
+			b.mobile_no
+		from customer_menus a inner join customer_users b on (a.owner_id = b.user_id)
+		order by a.menu_id desc'''
+    )
+    row = cursor.fetchall()
+	# # test = menus.response_set.filter(menu_id = users__user_id)
+	# print test.query
+	# m = menus.objects.create()
+	# u = users.objects.create()
+	# print m.owner_id.add(p)
+
+    return render(request, 'ajax_sampler.html')
+
+
+
+
+
+
+
+# select cus.lo_name--, sto.lo_name
+# from
+# 	--customer_menus 
+# 	--customer_users
+# 	(select b.location_name as lo_name
+# 		from
+# 		customer_orders a inner join customer_locations b on a.customer_id_id=b.l_user_id_id
+# 		where order_id = 1
+# 	) as cus
+# 	UNION ALL
+# 	(select b.location_name as lo_name
+# 		from
+# 		customer_orders a inner join customer_locations b on a.store_id_id=b.l_user_id_id
+# 		where order_id = 1
+# 	) as sto
+
+
+
+
+
+
+def test_query(request):
+	cursor = connection.cursor()
+	cursor.execute(
+	    	'''select
+				a.menu_id as id,
+				a.menu_name,
+				a.menu_detail,
+				a.menu_img,
+				a.menu_status,
+				a.owner_id,
+				b.type,
+				b.mobile_no
+			from customer_menus a inner join customer_users b on (a.owner_id = b.user_id)
+			order by a.menu_id desc'''
+	)
+	data = cursor.fetchall()
+	result = []
+	keys = ('menu_id','menu_name','menu_detail','menu_img','menu_status','owner_id','type','mobile_no')
+	for row in data:
+	    result.append(dict(zip(keys,row)))
+	json_data = json.dumps(result)
+	return HttpResponse(json_data, content_type="application/json")
+
+
+
 
 def supplier_page(request):
-    return render(request, 'main_app/supplier.html')
+	order = orders.objects.all()
+	menu = orders.objects.select_related()
+	print menu.query
+	data  = {'order': order}
+	return render(request, 'main_app/supplier.html', {"data": data})
 
 def customer_page(request):
     return render(request, 'main_app/customer.html')
@@ -187,7 +267,7 @@ class WalletDetail(APIView):
 
 class OrderList(APIView):
 	def get(self, request, format=None):
-		queryset = orders.objects.all()
+		queryset = orders.objects.all().order_by("-order_id")
 		serializer = OrderSerializer(queryset, many=True)
 		return Response(serializer.data)
 

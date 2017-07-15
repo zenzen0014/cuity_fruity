@@ -116,10 +116,11 @@
                                             
                                         </span>
                                     </div>
+                                    
                                     <div class="weui-form-preview__item">
                                         <label class="weui-form-preview__label">Add selection to basket</label>
                                         <span class="weui-form-preview__value">
-                                            <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary">+</a>
+                                            <a href="javascript:;" class="addBtn weui-btn weui-btn_mini weui-btn_primary">+</a>
                                         </span>
                                     </div>
                                 </div>
@@ -223,7 +224,7 @@
                             <div class="weui-form-preview__item">
                                 <label class="weui-form-preview__label">Add selection to basket</label>
                                 <span class="weui-form-preview__value">
-                                    <a href="javascript:;" class="weui-btn weui-btn_mini weui-btn_primary">+</a>
+                                    <a href="javascript:;" class="addBtn weui-btn weui-btn_mini weui-btn_primary">+</a>
                                 </span>
                             </div>
                         </div>
@@ -235,7 +236,8 @@
         
         <div class="weui-tab__content" id="c_basket">
             <div class="weui-panel__hd">Basket</div>
-            <div class="weui-panel_bd">
+            <div class="weui-panel_bd basket_content">
+
                 <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
                     <div class="weui-media-box__hd">
                         <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
@@ -286,167 +288,39 @@
             </div>
         </div>
 
+
+
+
+
         <div class="weui-tab__content" id="c_orderStatus">
             <div class="weui-panel__hd">Tracking</div>
             <div class="weui-panel__bd">
                 <div class="page__hd">
-                  <div class="weui-form-preview">
-                    <div class="weui-flex">
-                      <div class="weui-flex__item">
-                        <div class="placeholder">
-                          <div class="weui-media-box__hd">
-                            <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
-                        </div>
+                    <div class="weui-form-preview" id="order_status_content">
+
+
                     </div>
-                </div>
-                <div class="weui-flex__item">
-                    <h1 class="page__title">Order number 438947</h1>
-                </div>
-            </div>
-
-            <div class="weui-form-preview__hd">
-              <div class="weui-form-preview__item">
-                <label class="weui-form-preview__label">Total</label>
-                <em class="weui-form-preview__value">¥130.00</em>
-            </div>
-        </div>
-        <div class="weui-form-preview__bd">
-          <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">Content</label>
-            <span class="weui-form-preview__value">Hakuna Matata [Size small] [1]</span>
-            <span class="weui-form-preview__value">Sex on the Biche [Size medium] [2]</span>
-            <span class="weui-form-preview__value">Oleoleo pipi [Size Large] [1]</span>
-        </div>
-        <div class="weui-form-preview__item">
-          <br>
-      </div>
-      <div class="weui-form-preview__item">
-        <label class="weui-form-preview__label">Forseen delivery time</label>
-        <span class="weui-form-preview__value">17:50</span>
-    </div>
-    <div class="weui-form-preview__item">
-        <label class="weui-form-preview__label">Accepted by a delivery man</label>
-        <span class="weui-form-preview__value">
-          <div class="icon-box">
-            <i class="weui-icon-success"></i>
-        </div>
-    </span>                          
-</div>
-<div class="weui-form-preview__item">
-    <label class="weui-form-preview__label">Package picked-up at the store</label>
-    <span class="weui-form-preview__value">
-      <div class="icon-box">
-        <i class="weui-icon-circle"></i>
-    </div>
-</span>                          
-</div>
-<div class="weui-form-preview__item">
-    <label class="weui-form-preview__label">Arrived at your place</label>
-    <span class="weui-form-preview__value">
-      <div class="icon-box">
-        <i class="weui-icon-circle"></i>
-    </div>
-</span>                          
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="weui-tab__content" id="c_orderHistory">
-    <div class="weui-panel__hd">History</div>
-    <div class="weui-panel__bd">
-        <div class="page__hd">
-
-            <div class="weui-form-preview">
-               <div class="weui-form-preview__bd">
-                <div class="weui-panel__bd" style="text-align: left;">
-                    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px">
-                        <div class="weui-form-preview__item">
-                            <label class="weui-form-preview__label">Order number</label>
-                            <span class="weui-form-preview__value">456793   </span>
-                        </div>
-                    </a>
-                    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px">
-                        <div class="weui-media-box__hd">
-                            <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
-                        </div>
-                        <div class="weui-media-box__bd">
-                            <h4 class="weui-media-box__title" style="margin-bottom:-5px">Hakuna banana</h4>
-                            <p class="weui-media-box__desc">[small] [2]</p>
-                            <p class="weui-media-box__desc"><span style="text-align: left;">2400.00 ¥</span></p>
-                        </div>
-                    </a>
-
-                    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px">
-                        <div class="weui-media-box__hd">
-                            <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
-                        </div>
-                        <div class="weui-media-box__bd">
-                            <h4 class="weui-media-box__title" style="margin-bottom:-5px">Sex on the biche</h4>
-                            <p class="weui-media-box__desc">[Medium] [1]</p>
-                            <p class="weui-media-box__desc"><span style="text-align: left;">2400.00 ¥</span></p>
-                        </div>
-                    </a>
-                    
-                    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px">
-                        <div class="weui-form-preview__item">
-                            <label class="weui-form-preview__label">Date</label>
-                            <span class="weui-form-preview__value">03/05/2016</span>
-                            <label class="weui-form-preview__label">Price</label>
-                            <span class="weui-form-preview__value">50.00 ¥</span>
-                        </div>
-                    </a>
                 </div>
             </div>
         </div>
-        <br>
-        <div class="weui-form-preview">
-           <div class="weui-form-preview__bd">
-            <div class="weui-panel__bd" style="text-align: left;">
-                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px">
-                    <div class="weui-form-preview__item">
-                        <label class="weui-form-preview__label">Order number</label>
-                        <span class="weui-form-preview__value">456793   </span>
-                    </div>
-                </a>
-                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px">
-                    <div class="weui-media-box__hd">
-                        <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
-                    </div>
-                    <div class="weui-media-box__bd">
-                        <h4 class="weui-media-box__title" style="margin-bottom:-5px">Hakuna banana</h4>
-                        <p class="weui-media-box__desc">[small] [2]</p>
-                        <p class="weui-media-box__desc"><span style="text-align: left;">2400.00 ¥</span></p>
-                    </div>
-                </a>
 
-                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px">
-                    <div class="weui-media-box__hd">
-                        <img class="weui-media-box__thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==" alt="">
+
+
+
+        <div class="weui-tab__content" id="c_orderHistory">
+            <div class="weui-panel__hd">History</div>
+            <div class="weui-panel__bd">
+                <div class="page__hd">
+
+                    <div class="weui-form-preview" id="order_history_content">
+
+                       
                     </div>
-                    <div class="weui-media-box__bd">
-                        <h4 class="weui-media-box__title" style="margin-bottom:-5px">Sex on the biche</h4>
-                        <p class="weui-media-box__desc">[Medium] [1]</p>
-                        <p class="weui-media-box__desc"><span style="text-align: left;">2400.00 ¥</span></p>
-                    </div>
-                </a>
-                
-                <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px">
-                    <div class="weui-form-preview__item">
-                        <label class="weui-form-preview__label">Date</label>
-                        <span class="weui-form-preview__value">03/05/2016</span>
-                        <label class="weui-form-preview__label">Price</label>
-                        <span class="weui-form-preview__value">50.00 ¥</span>
-                    </div>
-                </a>
+
+                </div>
             </div>
         </div>
-    </div>
 
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -478,6 +352,11 @@
 </div>
 
 
+
+
+
+
+
 <script type="text/javascript">
     $("#sizePick").change(function(){
         console.log($('#sizePick').val());
@@ -498,21 +377,276 @@
       }
   });
 
+
+
+    var basket_s =[];
+    var sum_basket=0;
+
     $(function(){
         $('.weui-tabbar__item').on('click', function () {        
             $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
-            
+            get_all_data();
             var id = $(this).data('id');
             console.log(id);
             $('.tab_active').fadeOut('fast',function(){
                 $(this).removeClass('tab_active');
+                if(id=='c_basket'){
+                  renderBasket();
+                }
                 $('#'+id).fadeIn('fast',function(){
                     $(this).addClass('tab_active');
                 });
             });
             
         });
+        function fillBasket(id,name,size,img,desc,quantity,price){
+          var filled = "<a href='javascript:void(0);' id="+id+" class='weui-media-box weui-media-box_appmsg'> <div class='weui-media-box__hd'> <img class='weui-media-box__thumb' src='"+img+"' alt=''> </div> <div class='weui-media-box__bd'> <p class='weui-media-box_fruit_name'>Fruit name: "+name+"</p> <p class='weui-media-box__desc'>Box size: "+size+"</p> <p class='weui-media-box__desc''>Unit: "+quantity +"</p> <p class='weui-media-box_price'>Price: "+price+" ¥</p> </div> </a>";
+          return filled;
+        }
+        function renderBasket(){
+          $('.basket_content').children().remove();
+          sum_basket=0;
+          var static_basket = "<a href='javascript:void(0);' class='weui-media-box weui-media-box_appmsg'> <div class='weui-media-box__hd'> <img class='weui-media-box__thumb' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAMAAAAOusbgAAAAeFBMVEUAwAD///+U5ZTc9twOww7G8MYwzDCH4YcfyR9x23Hw+/DY9dhm2WZG0kbT9NP0/PTL8sux7LFe115T1VM+zz7i+OIXxhes6qxr2mvA8MCe6J6M4oz6/frr+us5zjn2/fa67rqB4IF13XWn6ad83nxa1loqyirn+eccHxx4AAAC/klEQVRo3u2W2ZKiQBBF8wpCNSCyLwri7v//4bRIFVXoTBBB+DAReV5sG6lTXDITiGEYhmEYhmEYhmEYhmEY5v9i5fsZGRx9PyGDne8f6K9cfd+mKXe1yNG/0CcqYE86AkBMBh66f20deBc7wA/1WFiTwvSEpBMA2JJOBsSLxe/4QEEaJRrASP8EVF8Q74GbmevKg0saa0B8QbwBdjRyADYxIhqxAZ++IKYtciPXLQVG+imw+oo4Bu56rjEJ4GYsvPmKOAB+xlz7L5aevqUXuePWVhvWJ4eWiwUQ67mK51qPj4dFDMlRLBZTqF3SDvmr4BwtkECu5gHWPkmDfQh02WLxXuvbvC8ku8F57GsI5e0CmUwLz1kq3kD17R1In5816rGvQ5VMk5FEtIiWislTffuDpl/k/PzscdQsv8r9qWq4LRWX6tQYtTxvI3XyrwdyQxChXioOngH3dLgOFjk0all56XRi/wDFQrGQU3Os5t0wJu1GNtNKHdPqYaGYQuRDfbfDf26AGLYSyGS3ZAK4S8XuoAlxGSdYMKwqZKM9XJMtyqXi7HX/CiAZS6d8bSVUz5J36mEMFDTlAFQzxOT1dzLRljjB6+++ejFqka+mXIe6F59mw22OuOw1F4T6lg/9VjL1rLDoI9Xzl1MSYDNHnPQnt3D1EE7PrXjye/3pVpr1Z45hMUdcACc5NVQI0bOdS1WA0wuz73e7/5TNqBPhQXPEFGJNV2zNqWI7QKBd2Gn6AiBko02zuAOXeWIXjV0jNqdKegaE/kJQ6Bfs4aju04lMLkA2T5wBSYPKDGF3RKhFYEa6A1L1LG2yacmsaZ6YPOSAMKNsO+N5dNTfkc5Aqe26uxHpx7ZirvgCwJpWq/lmX1hA7LyabQ34tt5RiJKXSwQ+0KU0V5xg+hZrd4Bn1n4EID+WkQdgLfRNtvil9SPfwy+WQ7PFBWQz6dGWZBLkeJFXZGCfLUjCgGgqXo5TuSu3cugdcTv/HjqnBTEMwzAMwzAMwzAMwzAMw/zf/AFbXiOA6frlMAAAAABJRU5ErkJggg==' alt=''> </div> <div class='weui-media-box__bd'> <p class='weui-media-box_fruit_name'>Fruit name: Akuna banana</p> <p class='weui-media-box__desc'>Box size: Medium</p> <p class='weui-media-box__desc''>Unit: 2 </p> <p class='weui-media-box_price'>Price: 25.00 ¥</p> </div> </a>";
+          for(menu in basket_s){
+              //$('.basket_content').append(fillBasket('','','','','','',''));
+              $('.basket_content').append(static_basket);
+              sum_basket++;
+          }
+          var static_sum="<a href='javascript:void(0);' class='weui-media-box weui-media-box_appmsg'> <div class='weui-media-box__bd'> <p class='weui-media-box_fruit_name'>Total: "+sum_basket+" ¥</p> </div> </a>";
+          $('.basket_content').append(static_sum);
+        }
+        $('.addBtn').on('click',function(){
+            var cursor = $(this).parent().parent().parent().parent()
+            g_c = cursor;
+            var menu_id = $(cursor).attr('id');
+            var menu_name = $(cursor).find('.menu_name h1').html();
+            var menu_desc = $(cursor).find('.menu_desc').html();
+            var obj = {
+              "menu_id":menu_id,
+              "menu_name":menu_name,
+              "menu_desc":menu_desc
+            };
+            basket_s.push(obj);
+
+
+            console.log(basket_s);
+
+
+        });
     });
+
+    
+
+    var customer_id= 1;
+
+    $(document).ready(function() {
+        // get_all_data();
+    });
+
+    function get_all_data(){
+        get_customer_order_status();
+        get_customer_order_history();
+    }
+
+    setTimeout(function(){
+        get_all_data()
+    }, 30000);
+
+
+    function get_customer_order_status(){
+        data = {"customer_id": customer_id}
+        $.ajax({
+            url: "get_customer_order_status",
+            data: data,
+            type: "POST",
+            dataType: 'json',
+            success: function (json) {
+                // console.log(json);
+                if(_.isEmpty(json)==false){
+                    $("#order_status_content").empty();
+                    $.each(json, function (i, v) {
+                        var is_accpeted = '<i class="weui-icon-circle"></i>';
+                        var is_picked_up = '<i class="weui-icon-circle"></i>';
+                        var is_arrived= '<i class="weui-icon-circle"></i>';
+
+                        if(v.ORDER_STATUS == 'paid'){
+                            is_accpeted = '<i class="weui-icon-success"></i>';
+                        }else if(v.ORDER_STATUS == 'picked'){
+                            is_accpeted = '<i class="weui-icon-success"></i>';
+                            is_picked_up = '<i class="weui-icon-success"></i>';
+                        }else{
+                            is_accpeted = '<i class="weui-icon-success"></i>';
+                            is_picked_up = '<i class="weui-icon-success"></i>';
+                            is_arrived = '<i class="weui-icon-success"></i>';
+                        }
+                        $("#order_status_content").append(
+                            '<div class="weui-flex">'+
+                                '<div class="weui-flex__item">'+
+                                    '<div class="placeholder">'+
+                                        '<div class="weui-media-box__hd">'+
+                                             '<img class="weui-media-box__thumb" src="data:image/png;base64,'+v.MENU_IMG+'" alt="">'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="weui-flex__item" style="padding-top: +40px; padding-right: +40px">'+
+                                    '<h1 class="page__title">Order number '+v.ORDER_ID+'</h1>'+
+                                '</div>'+
+                            '</div>'+
+
+                            '<div class="weui-form-preview__hd">'+
+                                '<div class="weui-form-preview__item">'+
+                                    '<label class="weui-form-preview__label">Total</label>'+
+                                    '<em class="weui-form-preview__value">¥'+v.TOTAL_PRICE+'</em>'+
+                                '</div>'+
+                            '</div>'+
+
+                            '<div class="weui-form-preview_bd">'+
+
+                                '<div class="weui-form-preview__item">'+
+                                    '<div class="weui-flex">'+
+                                        '<div class="weui-flex__item" style="padding-right: :-40px"><div class="placeholder"><label class="weui-form-preview__label">Content</label></div></div>'+
+                                        '<div class="weui-flex__item" style="padding-left:-40px"><div class="placeholder">'+
+                                            '<label class="weui-form-preview__label" style="text-align: right">'+v.MENU_NAME+' ['+v.PARCEL_DESC+']</label>'+
+                                            '<label class="weui-form-preview__label" style="text-align: right">Oleoleo pipi [Size Large] [1]</label>'+
+                                        '</div></div>'+
+                                    '</div>'+
+                                '</div>'+
+
+                                '<div class="weui-form-preview__item" style="margin-top:+10px">'+
+                                    '<div class="weui-flex">'+
+                                        '<div class="weui-flex__item"><div class="placeholder">'+
+                                            '<label class="weui-form-preview__label">Forseen delivery time</label>'+
+                                        '</div></div>'+
+                                        '<div class="weui-flex__item" ><div class="placeholder">'+
+                                            '<label class="weui-form-preview__label" style="float: right"><i>'+new Date(v.TIME_STAMP).toDateString()+'</i></label>'+
+                                        '</div></div>'+
+                                    '</div>'+
+                                '</div>'+
+
+                                '<div class="weui-form-preview__item">'+
+                                    '<div class="weui-flex">'+
+                                        '<div class="weui-flex__item"><div class="placeholder">'+
+                                            '<label class="weui-form-preview__label">Accepted by a delivery man</label>'+
+                                        '</div></div>'+
+                                        '<div class="weui-flex__item"><div class="placeholder">'+
+                                            '<div class="icon-box" style="text-align: right">'+
+                                                is_accpeted+
+                                            '</div>'+
+                                        '</div></div>'+
+                                    '</div>'+                       
+                                '</div>'+
+                                '<div class="weui-form-preview__item">'+
+                                    '<div class="weui-flex">'+
+                                        '<div class="weui-flex__item"><div class="placeholder">'+
+                                            '<label class="weui-form-preview__label">Package picked-up at the store</label>'+
+                                        '</div></div>'+
+                                        '<div class="weui-flex__item"><div class="placeholder">'+
+                                            '<div class="icon-box" style="text-align: right">'+
+                                                is_picked_up+
+                                            '</div>'+
+                                        '</div></div>'+
+                                    '</div>'+                     
+                                '</div>'+
+                                '<div class="weui-form-preview__item">'+
+                                    '<div class="weui-flex">'+
+                                        '<div class="weui-flex__item"><div class="placeholder">'+
+                                            '<label class="weui-form-preview__label">Arrived at your place</label>'+
+                                        '</div></div>'+
+                                        '<div class="weui-flex__item"><div class="placeholder">'+
+                                            '<div class="icon-box" style="text-align: right">'+
+                                                is_arrived+
+                                            '</div>'+
+                                        '</div></div>'+
+                                    '</div>' +                       
+                                '</div>'+
+                            '</div><br/>' 
+                        );
+                    });
+                }
+            }
+        });
+    }
+
+
+    function get_customer_order_history(){
+        data = {"customer_id": customer_id}
+        $.ajax({
+            url: "get_customer_order_history",
+            data: data,
+            type: "POST",
+            dataType: 'json',
+            success: function (json) {
+                console.log(json);
+                if(_.isEmpty(json)==false){
+                    $("#order_history_content").empty();
+                    $.each(json, function (i, v) {
+                        if(_.isEmpty(v.ORDER_ID)==false || v.ORDER_ID!=null){
+                            var tab_body ='';
+                            $.ajax({
+                                url: "get_customer_order_history_detail",
+                                data: {"customer_id": customer_id, "order_id":v.ORDER_ID},
+                                type: "POST",
+                                dataType: 'json',
+                                success: function (json2) {
+                                    console.log({"customer_id": customer_id, "order_id":v.ORDER_ID});
+                                    if(_.isEmpty(json2)==false){
+                                        $("#tab_on_bd_"+v.ORDER_ID).empty();
+                                        $.each(json, function (m ,k) {
+                                            if(_.isEmpty(k.ORDER_ID)==false || k.ORDER_ID!=null){
+                                               tab_body= 
+                                                            '<div class="weui-media-box__hd">'+
+                                                                '<img class="weui-media-box__thumb" src="data:image/png;base64,'+k.MENU_IMG+'" alt="">'+
+                                                            '</div>'+
+                                                            '<div class="weui-media-box__bd">'+
+                                                                '<h4 class="weui-media-box__title" style="margin-bottom:-5px">'+k.MENU_NAME+'</h4>'+
+                                                                '<p class="weui-media-box__desc">'+k.MENU_DETAIL+'</p>'+
+                                                                '<p class="weui-media-box__desc"><span style="text-align: left;">¥'+k.PRICE+'</span></p>'+
+                                                            '</div>'
+                                                        ;
+                                                $("#tab_on_bd_"+k.ORDER_ID).append(tab_body);
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                            
+                            $("#order_history_content").append(
+                                '<div class="weui-form-preview__bd">'+
+                                    '<div class="weui-panel__bd" style="text-align: left;">'+
+
+                                        '<a href="#" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px">'+
+                                            '<div class="weui-form-preview__item">'+
+                                                '<label class="weui-form-preview__label">Order number</label>'+
+                                                '<span class="weui-form-preview__value">'+v.ORDER_ID+'</span>'+
+                                            '</div>'+
+                                        '</a>'+
+
+                                        '<a href="#" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px" id="tab_on_bd_'+v.ORDER_ID+'">'+
+                                        '</a>'+
+
+                                        '<a href="#" class="weui-media-box weui-media-box_appmsg" style="margin-top:-5px;margin-bottom:-5px">'+
+                                            '<div class="weui-form-preview__item">'+
+                                                '<label class="weui-form-preview__label">Date</label>'+
+                                                '<span class="weui-form-preview__value">'+new Date(v.TIME_STAMP).toDateString()+'</span>'+
+                                                '<label class="weui-form-preview__label">Price</label>'+
+                                                '<span class="weui-form-preview__value">¥'+v.PRICE+'</span>'+
+                                            '</div>'+
+                                        '</a>'+
+
+                                    '</div>'+
+                                '</div>'
+
+                            );
+                        }
+
+                    });
+                }
+            }
+        });
+    }
+
+
+
 </script>
 
 
@@ -520,7 +654,7 @@
 
 
 
-
+<script src="{{ STATIC_URL }}/assets/js/underscore-min.js"></script>
 
 
 

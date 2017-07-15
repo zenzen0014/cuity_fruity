@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from rest_framework.urlpatterns import format_suffix_patterns
-from views import home,supplier_page,customer_page,delivery_page,weui_page, UserList, UserDetail, MenuList, MenuDetail, WalletList, WalletDetail, OrderList, OrderDetail, LocationList, LocationDetail, TestJoin
+from views import home,test_query,supplier_page,customer_page,delivery_page,weui_page, UserList, UserDetail, MenuList, MenuDetail, WalletList, WalletDetail, OrderList, OrderDetail, LocationList, LocationDetail, TestJoin
 
 urlpatterns = [
     url(r'^$', home),
@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^customer$', customer_page),
     url(r'^delivery$', delivery_page),
     url(r'^weui$', weui_page),
+    url(r'^test_query', test_query),
 
 
     url(r'^users', UserList.as_view()),
@@ -31,4 +32,6 @@ urlpatterns = [
 
 
     url(r'^test', TestJoin.as_view()),
+
+
 ]
